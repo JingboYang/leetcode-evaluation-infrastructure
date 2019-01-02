@@ -9,7 +9,7 @@ This framework has been tested using
 
 ## To Use
 * `cd` to root directory of **Leetcoder**
-* Create a new file under *Leetcoder/problems*. Filename must follow patter `q###(question number)_question_name.py`.
+* Create a new file under *Leetcoder/problems*. File Name must follow patter `q###(question number)_question_name.py`.
 * Follow [Basics](#Basics) to set up the file
 * Run `python3 leetcoder.py`
   * You **DO NOT** need to specify filename. The most recent file will be executed.
@@ -39,6 +39,12 @@ Time to execute problems.q504_base7.convertToBase7 is 0.0s
 '202'
 ===> Completed test case 0 <===s
 ```
+
+### What do I do each time?
+* Create a file using descriptive file name
+* Copy paste starter code from Leetcode (except `class Solution`)
+* Set up infrastructure variables
+* 
 
 
 ## Basics
@@ -77,6 +83,7 @@ input_string = """100
 ```
 
 Files in the [problems](problems/) folder are problems that I have solved. They are **NOT** necessarily correct and are **NOT** even guaranteed to run. They are only there as references to using this infrastructure. 
+(Back to [To Use](#To-Use))
 
 ## Advanced Use Cases
 
@@ -137,5 +144,9 @@ input_string = """["MaxStack","push","push","push","top","popMax","top","peekMax
 """    
 ```
 
+## Warning
+
+* `global`  variables should be used with extreme caution. My framework and Leetcode's evaluation framework do not clear up `global` variables. You should manually clean up `global` variables before hand.
+* Runtime provided here is very different from Leetcode runtime estimate. Timer here is for your reference only.
 
 

@@ -1,5 +1,5 @@
 # LeetCoder Guide
-Convenient Leetcode Python3 local evaluation infrastructure. This is a debug framework. **You** are responsible for checking whether the output matches with the correct answer.
+Convenient Leetcode Python3 local evaluation/execution infrastructure. This is a debugging framework. It helps you test your Leetcode submission locally by copy-pasting content from Leetcode. **You** are responsible for checking whether the output matches with the correct answer.
 
 ## Tested Environment
 This framework has been tested using

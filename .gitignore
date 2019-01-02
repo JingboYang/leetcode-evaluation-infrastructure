@@ -3,3 +3,6 @@
 
 # Ignore compiled Python
 *.pyc
+
+# Ignore Visual Studio Code Setting
+*.json

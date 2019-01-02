@@ -3,6 +3,9 @@ def convertToBase7(self, num):
     :type num: int
     :rtype: str
     """
+    if num == 0:
+        return '0'
+
     vals = []
     minus = False
     if num < 0:

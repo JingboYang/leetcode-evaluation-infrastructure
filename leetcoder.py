@@ -14,6 +14,7 @@ from lt_class_execution import *
 RE_FNAME = re.compile(r'q[0-9]+\w+\.py')
 RE_PARAMS = re.compile(r'def\s+(?P<func_name>\w+)\((?P<params>.*)\)')
 RE_CLASS = re.compile(r'class\s+(?P<class_name>\w+)\:')
+PROBLEMS = 'problems'
 
 def analyze_function_signature(func):
     searched = RE_PARAMS.search(func)
@@ -221,6 +222,8 @@ def execute_func(p, m, mod, first_line):
 def leetcoder_main(fname, method):
 
     p, m = fname.rsplit('.', 1)
+    p = p.replace('/', '.')
+    p = p.replace('\\', '.')
     mod = import_module(p)
 
     with open(fname, 'r') as f:
@@ -259,22 +262,21 @@ if __name__ == '__main__':
     fnames = None
     if args.fname is None:
 
-        fnames = os.listdir('.')
+        fnames = os.listdir(PROBLEMS + '/.')
 
         candidates = []
         for f in fnames:
+            f = os.path.join(PROBLEMS, f)
             if RE_FNAME.search(f) is not None:
-                #print(f)
-                #print(os.path.getctime(f))
                 candidates.append((modification_date(f), f))
         
         t, fname = max(candidates)
 
     else:
-
+        joint = os.path.join(PROBLEMS, sys.argv[1])
         if '.py' not in sys.argv[1]:
-            fname = sys.argv[1] + '.py'
+            fname = joint + '.py'
         else:
-            fname = sys.argv[1]
+            fname = joint
     
     leetcoder_main(fname, args.m)

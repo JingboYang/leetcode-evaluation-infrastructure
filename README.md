@@ -1,20 +1,24 @@
-# LeetCoder Guide
-Convenient Leetcode Python3 local evaluation/execution infrastructure. This is a debugging framework. It helps you test your Leetcode submission locally by copy-pasting content from Leetcode. **You** are responsible for checking whether the output matches with the correct answer.
+# LeetCoder User Manual
+Leetcoder is a convenient Leetcode Python3 local evaluation/execution infrastructure. This is a debugging framework. It helps you test your Leetcode algorithms locally by copy-pasting content from Leetcode. (*Playground Debug* doesn't even work for some questions). This is especially useful when your algorithm hits *Output Limit Exceeded*, *Runtime Error* (recursion limit), *Time Limit Exceeded* (but you want to see what has been printed). 
 
-## Tested Environment
+Remember that **YOU** are responsible for checking whether the output matches with the correct answer.
+
+## Tested Environmen
 This framework has been tested using
 
 * Windows 10 + Anaconda with Python 3.5.5
 * MacOS + Python 3.6.5 (no Anaconda)
+* If it works on Windows and MacOS, it probably works on most Linux distributions.
 
 ## To Use
 * `cd` to root directory of **Leetcoder**
-* Create a new file under *Leetcoder/problems*. File Name must follow patter `q###(question number)_question_name.py`.
+* Create a new file in directory *Leetcoder/problems*. File Name must follow patter `q###(question number)_question_name.py`.
 * Follow [Basics](#Basics) to set up the file
 * Run `python3 leetcoder.py`
-  * You **DO NOT** need to specify filename. The most recent file will be executed.
-  * To run a specific file, use `python3 leetcoder.py <filename>` (do not include directory *problems*)
+  * You **DO NOT** need to specify filename. The most recent file will be executed automatically.
+  * To test a specific file/problem, use `python3 leetcoder.py <filename>` (do not include directory *problems*)
 * You will see something like the following
+
 ```
 
     ############################################################
@@ -40,15 +44,16 @@ Time to execute problems.q504_base7.convertToBase7 is 0.0s
 ===> Completed test case 0 <===s
 ```
 
-### What do I do each time?
-* Create a file using descriptive file name
-* Copy paste starter code from Leetcode (except `class Solution`)
-* Set up infrastructure variables
-* 
+### Simply put, do the following for each question
+* Create a file with a descriptive file name that follows our `regex` pattern
+* Copy paste starter funciton definition from Leetcode (except `class Solution`)
+  * Yes, all you need is `def this_is_your_question(self, param1, param2)`
+  * Yes, leave `self` in there. It is okay to not have `self`. Copy-paste.
+* Set up infrastructure variables like [below](#Basics).
 
 
 ## Basics
-For example, we solve [Problem 504. Base 7](https://leetcode.com/problems/base-7/) using this framework. Alternatively, this file is included [here](problems/q504_base7.py).
+For example, we solve [Problem 504. Base 7](https://leetcode.com/problems/base-7/) using this framework. Alternatively, the solution file is [here](problems/q504_base7.py).
 
 ```python
 def convertToBase7(self, num):
@@ -82,7 +87,7 @@ input_string = """100
 """  
 ```
 
-Files in the [problems](problems/) folder are problems that I have solved. They are **NOT** necessarily correct and are **NOT** even guaranteed to run. They are only there as references to using this infrastructure. 
+Files in [problems](problems/) folder are problems that I have solved. They are **NOT** necessarily correct and are **NOT** guaranteed to run at all. They are only there as references to using this infrastructure. 
 (Back to [To Use](#To-Use))
 
 ## Advanced Use Cases
@@ -129,7 +134,7 @@ Notice that the first part is exactly the same as how you would solve the proble
 
 Printing of these data structures are handled too. Binary tree and linked lists print recursively (you can write your own if you wish to print node value only). 
 
-To support additional data structure, modify [lt_helper.py](lt_helper.py) and [leetcoder.py](leetcoder.py).
+To support additional data structure, modify [lt_helper.py](lt_helper.py) and [leetcoder.py](leetcoder.py). If the content is generic enough but is not a Leetcode input parameter, check out [Useful Generic Things](#Useful-Generic-Things) section for more details.
 
 ### Design Questions
 
@@ -143,6 +148,15 @@ input_string = """["MaxStack","push","push","push","top","popMax","top","peekMax
 [[],[5],[1],[5],[],[],[],[],[],[]]
 """    
 ```
+
+## Useful Generic Things
+
+I have created a file that contains algorithms/data structures that you might find useful. Look at [lt_algos.py](lt_algos.py). If you use content from this file, you can `from lt_algos import *`. Remember to copy-paste the content you used to submission code.
+
+The following is a list of things available at the moment
+* [Trie](https://en.wikipedia.org/wiki/Trie)
+  * `class Trie`
+  * `class TrieNode`
 
 ## Warning
 
